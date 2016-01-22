@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Threading">
+      <UniqueIdentifier>{ec1a598a-e3ec-4535-bbdb-aaffd4792756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Threading\Thread">
+      <UniqueIdentifier>{eeaa9b27-1622-468b-9d62-87fc88ec6927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Threading\Sync">
+      <UniqueIdentifier>{4a3aee8b-856f-49bf-b174-d8c6284ee4dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base">
+      <UniqueIdentifier>{da11de04-7c47-44a2-bdff-ebc61d850ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threading">
+      <UniqueIdentifier>{50013ecc-8818-41c9-b372-68daa43d8594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threading\Thread">
+      <UniqueIdentifier>{4cbd4274-5ef1-4475-bfc5-a33176cd8e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Threading\Sync">
+      <UniqueIdentifier>{af5503b4-1648-4ed6-a465-ceeb50df4450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Modeling">
+      <UniqueIdentifier>{63a9c4d2-c7e5-4627-be97-9d7e77b5ff89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Modeling">
+      <UniqueIdentifier>{1295fa54-a8a7-4962-8a08-f3db92718e97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Base">
+      <UniqueIdentifier>{3b3443ec-b1dd-4592-9a02-137f38c0235d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Base\Memory">
+      <UniqueIdentifier>{efaec131-433f-4849-b519-092599c2e0be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base\Memory">
+      <UniqueIdentifier>{d057fe5c-1cff-4c0e-b18c-5a6f78c5e8ea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseLib\Exception.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\WinError.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\SyncObjPool.h">
+      <Filter>Header Files\Threading\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\SyncObjs.h">
+      <Filter>Header Files\Threading\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\SyncPrems.h">
+      <Filter>Header Files\Threading\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\SyncQueue.h">
+      <Filter>Header Files\Threading\Sync</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\WorkerThread.h">
+      <Filter>Header Files\Threading\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\Threading.h">
+      <Filter>Header Files\Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="Modeling\Identifier.h">
+      <Filter>Header Files\Modeling</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\UUIDUtils.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\Misc.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\ManagedObj.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\ManagedRef.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\Allocator.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\ThreadThrottler.h">
+      <Filter>Header Files\Threading\Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\DebugLog.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\StatMM.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\MMSwitcher.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\NedMM.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\FastMM.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLib\RecMM.h">
+      <Filter>Header Files\Base\Memory</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadLib\StackWalker.h">
+      <Filter>Header Files\Threading</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseLib\Exception.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\WinError.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\Threading.cpp">
+      <Filter>Source Files\Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\SyncPrems.cpp">
+      <Filter>Source Files\Threading\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="Modeling\Identifier.cpp">
+      <Filter>Source Files\Modeling</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\UUIDUtils.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\Misc.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\WorkerThread.cpp">
+      <Filter>Source Files\Threading\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\SyncObjPool.cpp">
+      <Filter>Source Files\Threading\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\SyncObjs.cpp">
+      <Filter>Source Files\Threading\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\SyncQueue.cpp">
+      <Filter>Source Files\Threading\Sync</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\ManagedObj.cpp">
+      <Filter>Source Files\Base\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\ManagedRef.cpp">
+      <Filter>Source Files\Base\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\ThreadThrottler.cpp">
+      <Filter>Source Files\Threading\Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\DebugLog.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\StatMM.cpp">
+      <Filter>Source Files\Base\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\NedMM.cpp">
+      <Filter>Source Files\Base\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\FastMM.cpp">
+      <Filter>Source Files\Base\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLib\RecMM.cpp">
+      <Filter>Source Files\Base\Memory</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadLib\StackWalker.cpp">
+      <Filter>Source Files\Threading</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
