@@ -50,11 +50,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "BaseLib/ManagedRef.h"
 
 /**
-* @ingroup Threading
-* @brief Lockable class
-*
-* Abstract class for suppoting lock operations
-**/
+ * @ingroup Threading
+ * @brief Lockable class
+ *
+ * Abstract class for suppoting lock operations
+ **/
 class TLockable {
 public:
 	virtual ~TLockable(void) {}
@@ -78,18 +78,18 @@ public:
 	};
 
 	/**
-	* Acquire the lock, wait forever
-	**/
+	 * Acquire the lock, wait forever
+	 **/
 	virtual void __SyncLock(void)
 	{ FAIL(_T("Abstract function")); }
 	/**
-	* Try to acquire the lock in this instant, return false if failed
-	**/
+	 * Try to acquire the lock in this instant, return false if failed
+	 **/
 	virtual bool __SyncTryLock(void)
 	{ FAIL(_T("Abstract function")); }
 	/**
-	* Release acquired lock
-	**/
+	 * Release acquired lock
+	 **/
 	virtual void __SyncUnlock(void)
 	{ FAIL(_T("Abstract function")); }
 
@@ -105,11 +105,11 @@ public:
 typedef TLockable* PLockable;
 
 /**
-* @ingroup Threading
-* @brief Lockable synchronization premitive class
-*
-* Adapter class to convert synchronization premitives to lockables
-**/
+ * @ingroup Threading
+ * @brief Lockable synchronization premitive class
+ *
+ * Adapter class to convert synchronization premitives to lockables
+ **/
 template<class TSyncPerms>
 class TLockableSyncPerms : public TLockable {
 protected:
@@ -187,11 +187,11 @@ public:
 };
 
 /**
-* @ingroup Threading
-* @brief GenericWaitResult::apper to synchronize any object
-*
-* Wraps around an object with a lockable class to protect asynchronous accesses
-**/
+ * @ingroup Threading
+ * @brief GenericWaitResult::apper to synchronize any object
+ *
+ * Wraps around an object with a lockable class to protect asynchronous accesses
+ **/
 template<class T, class TAllocator = SimpleAllocator<T>, class CLockable = TLockableCS>
 class TSyncObj : private ManagedRef<T, TAllocator>, public TLockable {
 protected:
@@ -229,85 +229,85 @@ public:
 
 public:
 	/**
-	* Create a new instance of T and managed object with default parameter
-	**/
+	 * Create a new instance of T and managed object with default parameter
+	 **/
 	TSyncObj(void) : ManagedRef(EMPLACE_CONSTRUCT) {}
 	/**
-	* Create a new instance of T and managed object with given parameter
-	**/
+	 * Create a new instance of T and managed object with given parameter
+	 **/
 	template<typename A, typename... Params,
 		typename = std::enable_if<!std::is_same<HANDOFF_CONSTRUCT_T const&, A>::value>::type,
 		typename = std::enable_if<!std::is_same<TSyncObj const&, A>::value>::type,
 		typename = std::enable_if<!std::is_same<TSyncObj&&, A>::value>::type>
 		TSyncObj(A &&xA, Params&&... xParams) : ManagedRef(EMPLACE_CONSTRUCT, xA, xParams...) {}
 	/**
-	* Create a new instance of T and take onwership of the object
-	**/
+	 * Create a new instance of T and take onwership of the object
+	 **/
 	TSyncObj(HANDOFF_CONSTRUCT_T const&, T *Obj) : ManagedRef(Obj, HANDOFF_CONSTRUCT) {}
 	/**
-	* Copy construction
-	**/
+	 * Copy construction
+	 **/
 	TSyncObj(TSyncObj const &Src);
 	/**
-	* Move construction
-	**/
+	 * Move construction
+	 **/
 	TSyncObj(TSyncObj &&Src);
 	/**
-	* Use discard managed instance
-	**/
+	 * Use discard managed instance
+	 **/
 	virtual ~TSyncObj(void);
 	/**
-	* Copy assignment
-	**/
+	 * Copy assignment
+	 **/
 	TSyncObj& operator=(TSyncObj const &Src);
 	/**
-	* Move assignment
-	**/
+	 * Move assignment
+	 **/
 	TSyncObj& operator=(TSyncObj &&Src);
 
 	TSyncObj* operator&(void)
 	{ return this; }
 
 	/**
-	* Lock theWaitResult::apper, and return an reference of managed T instance
-	**/
+	 * Lock theWaitResult::apper, and return an reference of managed T instance
+	 **/
 	inline T& __Pickup(void);
 	/**
-	* Try to lock theWaitResult::apper in the instant, and return a pointer to managed T instance, NULL if could not obtain lock
-	**/
+	 * Try to lock theWaitResult::apper in the instant, and return a pointer to managed T instance, NULL if could not obtain lock
+	 **/
 	inline T* __TryPickup(void);
 	/**
-	* Unlock theWaitResult::apper, render all references and pointers of the managed T invalid
-	**/
+	 * Unlock theWaitResult::apper, render all references and pointers of the managed T invalid
+	 **/
 	inline void __Drop(void);
 
 	/**
-	* Lock theWaitResult::apper, and return an reference of managed T instance
-	**/
+	 * Lock theWaitResult::apper, and return an reference of managed T instance
+	 **/
 	TDeSyncObj Pickup(void);
 	/**
-	* Try to lock theWaitResult::apper in the instant, and return a pointer to managed T instance, NULL if could not obtain lock
-	**/
+	 * Try to lock theWaitResult::apper in the instant, and return a pointer to managed T instance, NULL if could not obtain lock
+	 **/
 	TDeSyncObj TryPickup(void);
 
 	/**
-	* Lock theWaitResult::apper, reassign the managed T instance as RefObj, and unlock theWaitResult::apper
-	* @note T must support assignment operator
-	**/
+	 * Lock theWaitResult::apper, reassign the managed T instance as RefObj, and unlock theWaitResult::apper
+	 * @note T must support assignment operator
+	 **/
 	T Assign(T const &RefObj);
 
 	/**
-	* Lock theWaitResult::apper, if managed T instance equals CmpObj, swap the instance content of managed T and RefObj, and unlock theWaitResult::apper
-	* @return Whether T instance content swap took place
-	* @note If swap did not took place, RefObj will be reassigned as the current T instance
-	* @note T must support equality operator, copy consutrction, and assignment operator
-	**/
+	 * Lock theWaitResult::apper, if managed T instance equals CmpObj, swap the instance content of managed T and RefObj, and unlock theWaitResult::apper
+	 * @return Whether T instance content swap took place
+	 * @note If swap did not took place, RefObj will be reassigned as the current T instance
+	 * @note T must support equality operator, copy consutrction, and assignment operator
+	 **/
 	bool CompareAndSwap(T const &CmpObj, T &RefObj);
 
 	/**
-	* Lock theWaitResult::apper, assign a copy of the managed T instance to DstObj, and unlock theWaitResult::apper
-	* @note T must support assignment operator
-	**/
+	 * Lock theWaitResult::apper, assign a copy of the managed T instance to DstObj, and unlock theWaitResult::apper
+	 * @note T must support assignment operator
+	 **/
 	void Snapshot(T &DstObj) const;
 
 	inline void __SyncLock(void) override

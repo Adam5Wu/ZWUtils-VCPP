@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Managed Object Helpers
-// Zhenyu Wu @ Oct 27, 2013: Split off template class
 
 #include "MMSwitcher.h"
 

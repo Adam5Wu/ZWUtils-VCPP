@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Threading] Synchronized Objects Template
-// Zhenyu Wu @ Jul 29, 2013: Port to Visual C++ 2012
 
 #include "BaseLib/MMSwitcher.h"
 

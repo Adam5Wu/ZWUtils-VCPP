@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Memory Operation Recorder
-// Zhenyu Wu @ Jul 14, 2014: Initial implementation
 
 #ifdef RECMM
 

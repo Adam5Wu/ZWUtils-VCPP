@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Statistics Memory Manager Helpers
-// Zhenyu Wu @ Jan 16, 2014: Initial implementation
 
 #ifdef STATMM
 

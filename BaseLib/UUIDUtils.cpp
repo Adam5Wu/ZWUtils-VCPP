@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Basic UUID Operations
-// Zhenyu Wu @ Sep 24, 2013: Uplift from a child project
 
 #include "MMSwitcher.h"
 

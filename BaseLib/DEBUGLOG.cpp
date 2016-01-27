@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Generic Debug Support
-// Zhenyu Wu @ Jul 29, 2013: Unicode compatibility, macro name disambiguation
 
 #include "MMSwitcher.h"
 

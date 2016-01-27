@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Threading] Synchronized Object Pool Template
-// Zhenyu Wu @ Aug 02, 2013: Initial implementation
 
 #include "BaseLib/MMSwitcher.h"
 

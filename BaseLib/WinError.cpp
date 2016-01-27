@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Windows API Error Decoding
-// Zhenyu Wu @ Jul 29, 2013: Initial Implementation
 
 #include "MMSwitcher.h"
 

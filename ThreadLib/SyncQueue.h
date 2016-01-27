@@ -48,11 +48,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //#define SIGNAL_MODERATION
 
 /**
-* @ingroup Threading
-* @brief Synchronized queue
-*
-* Synchronized wrapper around a STL deque-like container for queue (FIFO) operations
-**/
+ * @ingroup Threading
+ * @brief Synchronized queue
+ *
+ * Synchronized wrapper around a STL deque-like container for queue (FIFO) operations
+ **/
 template<class T, class Container = std::deque<T>>
 class TSyncQueue : TLockable {
 public:
@@ -88,39 +88,39 @@ public:
 	~TSyncQueue() override;
 
 	/**
-	* Put an object into the queue (no upper limit)
-	**/
+	 * Put an object into the queue (no upper limit)
+	 **/
 	size_type Enqueue(T entry);
 	/**
-	* Construct and put an object into the queue (no upper limit)
-	**/
+	 * Construct and put an object into the queue (no upper limit)
+	 **/
 	template<typename... Params>
 	size_type Emplace_Enqueue(Params&&... xParams);
 
 	/**
-	* Try get an object fromt the queue with given timeout
-	* @note: For multiple concurrent getters, fairness and timeout precision are NOT guaranteed!
-	**/
+	 * Try get an object fromt the queue with given timeout
+	 * @note: For multiple concurrent getters, fairness and timeout precision are NOT guaranteed!
+	 **/
 	bool Dequeue(T &entry, DWORD Timeout = INFINITE, TWaitable *xWaitEvent = nullptr);
 
 	/**
-	* Return the instantaneous length of the queue
-	**/
+	 * Return the instantaneous length of the queue
+	 **/
 	inline size_type Length(void);
 
 	inline void AdjustSize(void);
 
 #ifdef EMPTY_EVENT
 	/**
-	* Try waiting for queue to become empty and hold a lock on the queue
-	* @note: For multiple concurrent waiters, fairness and timeout precision are NOT guaranteed!
-	**/
+	 * Try waiting for queue to become empty and hold a lock on the queue
+	 * @note: For multiple concurrent waiters, fairness and timeout precision are NOT guaranteed!
+	 **/
 	bool EmptyLock(DWORD Timeout = INFINITE, TWaitable *xWaitEvent = nullptr);
 
 	/**
-	* Release lock on the queue acquired by EmptyLock
-	* @note: You MUST use this function instead of SyncUnlock, or other threads on EmptyLock may sleep longer than needed!
-	**/
+	 * Release lock on the queue acquired by EmptyLock
+	 * @note: You MUST use this function instead of SyncUnlock, or other threads on EmptyLock may sleep longer than needed!
+	 **/
 	void EmptyUnlock(void);
 #endif //EMPTY_EVENT
 
@@ -260,7 +260,7 @@ bool TSyncQueue<T, Container>::Dequeue(T &entry, DWORD Timeout, TWaitable *xWait
 						return false;
 				}
 			}
-	});
+		});
 #else
 		DWORD Delta;
 		if (Timeout != INFINITE) {
@@ -278,7 +278,7 @@ bool TSyncQueue<T, Container>::Dequeue(T &entry, DWORD Timeout, TWaitable *xWait
 				return false;
 		}
 #endif//SIGNAL_MODERATION
-}
+	}
 }
 
 template<class T, class Container>

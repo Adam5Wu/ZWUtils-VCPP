@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Threading] Thread Throttling Support
-// Zhenyu Wu @ Nov 13, 2005: Initial implementation
 
 #include "BaseLib/MMSwitcher.h"
 

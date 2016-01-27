@@ -65,7 +65,7 @@ typedef TSyncInt32 TSyncInt;
 #endif //_WIN64
 
 /**
-* @ingroup Threading
+ * @ingroup Threading
 * @brief Synchronized Code Wrapper
 *
 * Make a piece of code synchronized with respect to a lockable object

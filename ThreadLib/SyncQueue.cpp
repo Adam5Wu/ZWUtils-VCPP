@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Threading] Synchronized Message Queue
-// Zhenyu Wu @ Aug 01, 2013: Initial implementation
 
 #include "BaseLib/MMSwitcher.h"
 

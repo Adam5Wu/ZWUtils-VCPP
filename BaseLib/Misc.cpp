@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Misc utilities
-// Zhenyu Wu @ Sep 25, 2013: Uplift from a child project
 
 #include "MMSwitcher.h"
 

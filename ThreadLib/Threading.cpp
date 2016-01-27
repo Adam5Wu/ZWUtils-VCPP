@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Threading] Basic Threading Support
-// Zhenyu Wu @ Jul 26, 2013: Porting to Visual C++ 2012
 
 #include "BaseLib/MMSwitcher.h"
 

@@ -29,9 +29,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Nedmalloc Memory Manager Helpers
-// Zhenyu Wu @ Jan 24, 2014: Initial implementation
 
 #include "NedMM.h"
+
+#if 0 // Disabled for now
 
 #include "../../nedmalloc/nedmalloc.h"
 
@@ -163,3 +164,5 @@ int __CRTDECL _ned_trim(
 	) {
 	return nedalloc::nedmalloc_trim(reserve);
 }
+
+#endif

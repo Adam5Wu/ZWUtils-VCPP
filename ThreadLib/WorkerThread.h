@@ -47,45 +47,45 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 class TWorkerThread;
 
 /**
-* @ingroup Threading
-* @brief Runnable template
-*
-* Defines the required function call interfaces for TWorkerThread wrapper
-**/
+ * @ingroup Threading
+ * @brief Runnable template
+ *
+ * Defines the required function call interfaces for TWorkerThread wrapper
+ **/
 class TRunnable {
 	friend TWorkerThread;
 protected:
 	virtual ~TRunnable(void) {}
 
 	/**
-	* The "main" function of the runnable object
-	**/
+	 * The "main" function of the runnable object
+	 **/
 	virtual void* Run(TWorkerThread &WorkerThread, void *Data) {
 		FAIL(_T("Abstract function"));
 	}
 
 	/**
-	* Notify the stop request from worker thread
-	**/
+	 * Notify the stop request from worker thread
+	 **/
 	virtual void StopNotify(void) {}
 	/**
-	* Discard the input data resource
-	**/
+	 * Discard the input data resource
+	 **/
 	virtual void DiscardInput(void *InputData) {}
 	/**
-	* Discard the return data resource
-	**/
+	 * Discard the return data resource
+	 **/
 	virtual void DiscardReturn(void *RetData) {}
 };
 
 class ThreadThrottler;
 
 /**
-* @ingroup Threading
-* @brief Generic worker thread template
-*
-* Can wrap "runnable" class instance into a thread
-**/
+ * @ingroup Threading
+ * @brief Generic worker thread template
+ *
+ * Can wrap "runnable" class instance into a thread
+ **/
 class TWorkerThread : public TWaitable {
 	friend ThreadThrottler;
 public:
@@ -119,9 +119,9 @@ public:
 	DWORD const ThreadID;
 
 	/**
-	* Create and start the thread for executing the Runnable object instance
-	* @note The thread is started as soon as its creation, so any initialization MUST be done before calling this function
-	**/
+	 * Create and start the thread for executing the Runnable object instance
+	 * @note The thread is started as soon as its creation, so any initialization MUST be done before calling this function
+	 **/
 	template<class IRunnable>
 	TWorkerThread(TString const &xName, IRunnable &Runnable, void* InputData, SIZE_T StackSize = 0, bool SelfFree = false) :
 		rRunnable(Runnable), rInputData(InputData), rReturnData(nullptr), rSelfFree(SelfFree),
@@ -133,33 +133,33 @@ public:
 	~TWorkerThread(void) override;
 
 	/**
-	* Signal the thread to terminate
-	* @return Previous worker thread state
-	**/
+	 * Signal the thread to terminate
+	 * @return Previous worker thread state
+	 **/
 	State SignalTerminate(void);
 	State CurrentState(void);
 
 	/**
-	* Mark thread as self-free (Exercise caution when use this function!)
-	**/
+	 * Mark thread as self-free (Exercise caution when use this function!)
+	 **/
 	void SelfFree(void);
 
 	/**
-	* Join or leave a thread throttler group
-	**/
+	 * Join or leave a thread throttler group
+	 **/
 	void Throttler(ThreadThrottler *xThrottler);
 
 	/**
-	* Get the return data of the thread
-	* @note Must be called AFTER worker thread goes to wtsTerminated
-	* @note The caller does NOT own the retrieved data, DO NOT FREE!
-	**/
+	 * Get the return data of the thread
+	 * @note Must be called AFTER worker thread goes to wtsTerminated
+	 * @note The caller does NOT own the retrieved data, DO NOT FREE!
+	 **/
 	void* getReturnData(void);
 	/**
-	* Get the Exception object that terminated the thread
-	* @note Must be called AFTER worker thread goes to wtsTerminated
-	* @note The caller does NOT own the retrieved exception, DO NOT FREE!
-	**/
+	 * Get the Exception object that terminated the thread
+	 * @note Must be called AFTER worker thread goes to wtsTerminated
+	 * @note The caller does NOT own the retrieved exception, DO NOT FREE!
+	 **/
 	Exception* getException(void);
 
 	HANDLE CreateWaitHandle(void) const override;

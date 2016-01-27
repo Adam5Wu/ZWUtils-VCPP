@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] Managed Reference Helpers
-// Zhenyu Wu @ Oct 27, 2013: Refactored from ManagedObj
 
 #include "BaseLib/MMSwitcher.h"
 

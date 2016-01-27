@@ -62,33 +62,33 @@ WaitResult WaitSingle(const TWaitable &Waitable, DWORD Timeout = INFINITE, bool 
 WaitResult WaitMultiple(std::vector<std::reference_wrapper<TWaitable const>> const &Waitables, bool WaitAll, DWORD Timeout = INFINITE, bool WaitAPC = false, bool WaitMsg = false);
 
 /**
-* @ingroup Threading
-* @brief Waitable base class
-*
-* Base class for all handle-based waitable objects
-**/
+ * @ingroup Threading
+ * @brief Waitable base class
+ *
+ * Base class for all handle-based waitable objects
+ **/
 class TWaitable {
 public:
 	virtual ~TWaitable() {}
 	/**
-	* Wait for a given amount of time or until signaled
-	**/
+	 * Wait for a given amount of time or until signaled
+	 **/
 	virtual WaitResult WaitFor(DWORD Timeout = INFINITE)
 	{ return WaitSingle(*this, Timeout); };
 
 	/**
-	* Get the waitable handle for advanced operations
-	**/
+	 * Get the waitable handle for advanced operations
+	 **/
 	virtual HANDLE CreateWaitHandle(void) const
 	{ FAIL(_T("Abstract function")); };
 };
 
 /**
-* @ingroup Threading
-* @brief Semaphore
-*
-* (Optionally Named) Semaphore
-**/
+ * @ingroup Threading
+ * @brief Semaphore
+ *
+ * (Optionally Named) Semaphore
+ **/
 class TSemaphore : public TWaitable {
 private:
 	HANDLE rSemaphore;
@@ -98,20 +98,20 @@ public:
 	~TSemaphore(void) override;
 
 	/**
-	* Signal the semaphore with given count
-	* @return Previous semaphore count
-	**/
+	 * Signal the semaphore with given count
+	 * @return Previous semaphore count
+	 **/
 	LONG Signal(LONG Count = 1);
 
 	HANDLE CreateWaitHandle(void) const override;
 };
 
 /**
-* @ingroup Threading
-* @brief Mutex
-*
-* (Optionally Named) Mutex
-**/
+ * @ingroup Threading
+ * @brief Mutex
+ *
+ * (Optionally Named) Mutex
+ **/
 class TMutex : public TWaitable {
 private:
 	HANDLE rMutex;
@@ -121,31 +121,31 @@ public:
 	~TMutex(void) override;
 
 	/**
-	* Acquire the lock, wait forever
-	**/
+	 * Acquire the lock, wait forever
+	 **/
 	WaitResult Acquire(void)
 	{ return WaitFor(); }
 
 	/**
-	* Try to acquire the lock within given time
-	**/
+	 * Try to acquire the lock within given time
+	 **/
 	WaitResult TryAcquire(DWORD Timeout = 0)
 	{ return WaitFor(Timeout); }
 
 	/**
-	* Release the lock
-	**/
+	 * Release the lock
+	 **/
 	void Release(void);
 
 	HANDLE CreateWaitHandle(void) const override;
 };
 
 /**
-* @ingroup Threading
-* @brief Event
-*
-* (Optionally Named) Event
-**/
+ * @ingroup Threading
+ * @brief Event
+ *
+ * (Optionally Named) Event
+ **/
 class TEvent : public TWaitable {
 private:
 	HANDLE rEvent;
@@ -155,30 +155,30 @@ public:
 	~TEvent(void) override;
 
 	/**
-	* Set the event
-	**/
+	 * Set the event
+	 **/
 	void Set(void);
 
 	/**
-	* Reset the event
-	**/
+	 * Reset the event
+	 **/
 	void Reset(void);
 
 	/**
-	* Pulse the event
-	**/
+	 * Pulse the event
+	 **/
 	void Pulse(void);
 
 	HANDLE CreateWaitHandle(void) const override;
 };
 
 /**
-* @ingroup Threading
-* @brief Critical Section
-*
-* Lightweight synchronization for single thread
-* @note Not a waitable object (no handle)
-**/
+ * @ingroup Threading
+ * @brief Critical Section
+ *
+ * Lightweight synchronization for single thread
+ * @note Not a waitable object (no handle)
+ **/
 class TCriticalSection {
 private:
 	RTL_CRITICAL_SECTION rCriticalSection;
@@ -189,18 +189,18 @@ public:
 	virtual ~TCriticalSection(void);
 
 	/**
-	* Enter the critical section
-	**/
+	 * Enter the critical section
+	 **/
 	void Enter(void);
 
 	/**
-	* Try enter the critical section
-	**/
+	 * Try enter the critical section
+	 **/
 	bool TryEnter(void);
 
 	/**
-	* Leave the critical section
-	**/
+	 * Leave the critical section
+	 **/
 	void Leave(void);
 };
 

@@ -47,12 +47,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "SyncQueue.h"
 
 /**
-* @ingroup Threading
-* @brief Synchronized object pool template
-*
-* Defines a life-cycle managed pool of object resource, upports allocation provisioning and buffer reduction
-* @note Since the underlying implementation uses TSyncQueue, it inherits similar functionality limitations
-**/
+ * @ingroup Threading
+ * @brief Synchronized object pool template
+ *
+ * Defines a life-cycle managed pool of object resource, upports allocation provisioning and buffer reduction
+ * @note Since the underlying implementation uses TSyncQueue, it inherits similar functionality limitations
+ **/
 template <class T, class TAllocator = SimpleAllocator<T>>
 class TSyncObjPool {
 public:
@@ -120,31 +120,31 @@ public:
 	virtual ~TSyncObjPool(void);
 
 	/**
-	* Acquire an object via the TSyncPoolObj reference with timeout
-	* @note Resource releasing via the Release() function of the TSyncPoolObj reference
-	**/
+	 * Acquire an object via the TSyncPoolObj reference with timeout
+	 * @note Resource releasing via the Release() function of the TSyncPoolObj reference
+	 **/
 	virtual TSyncPoolObj* Acquire(DWORD Timeout = INFINITE, TWaitable *xWaitEvent = nullptr);
 
 	/**
-	* Return the instantaneous capacity (all allocated = released + acuqired) of the pool
-	**/
+	 * Return the instantaneous capacity (all allocated = released + acuqired) of the pool
+	 **/
 	inline size_type Capacity(void)
 	{ return ~AllocCnt; }
 
 	/**
-	* Wait for all objects return to the pool and lock the acquistion operation
-	* @note Only intended for short operations (otherwise may hang Acquire indefinitely)
-	**/
+	 * Wait for all objects return to the pool and lock the acquistion operation
+	 * @note Only intended for short operations (otherwise may hang Acquire indefinitely)
+	 **/
 	bool ObjectReturnLock(DWORD Timeout = INFINITE, TWaitable *xWaitEvent = nullptr);
 
 	/**
-	* Release acquistion operation lock
-	**/
+	 * Release acquistion operation lock
+	 **/
 	void ObjectReturnUnlock(void);
 
 	/**
-	* Switch to a new instance of pool object allocator
-	**/
+	 * Switch to a new instance of pool object allocator
+	 **/
 	bool SetAllocator(TAllocator *xObjAlloc, DWORD Timeout = INFINITE, TWaitable *xWaitEvent = nullptr);
 };
 

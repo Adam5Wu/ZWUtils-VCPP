@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Utilities] FastMM Memory Manager Helpers
-// Zhenyu Wu @ Jan 27, 2014: Initial implementation
 
 #include "FastMM.h"
 

@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Threading] Generic Worker Thread
-// Zhenyu Wu @ Jul 31, 2013: Port to Visual C++ 2012
 
 #include "BaseLib/MMSwitcher.h"
 

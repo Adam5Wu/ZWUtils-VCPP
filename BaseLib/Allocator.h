@@ -49,34 +49,34 @@ template<class T>
 struct IAllocator {};
 
 /**
-* @ingroup Utilities
-* @brief Object allocator template
-*
-* Manages the life cycle of an object
-**/
+ * @ingroup Utilities
+ * @brief Object allocator template
+ *
+ * Manages the life cycle of an object
+ **/
 template<typename T>
 struct SimpleAllocator : public IAllocator < T > {
 	/**
-	* Create an object
-	**/
+	 * Create an object
+	 **/
 	template<typename... Params>
 	inline static T* Create(Params&&... xParams)
 	{ return new T(xParams...); }
 
 	/**
-	* Destroy an object
-	**/
+	 * Destroy an object
+	 **/
 	inline static void Destroy(T *Obj)
 	{ delete Obj; }
 };
 
 /**
-* @ingroup Utilities
-* @brief Dummy object allocator
-*
-* A dummy object allocator that will NOT perform any managing
-* @note Useful for working with externally managed objects
-**/
+ * @ingroup Utilities
+ * @brief Dummy object allocator
+ *
+ * A dummy object allocator that will NOT perform any managing
+ * @note Useful for working with externally managed objects
+ **/
 template<typename T>
 struct DummyAllocator : public IAllocator < T > {
 	template<typename... Params>
@@ -87,11 +87,11 @@ struct DummyAllocator : public IAllocator < T > {
 };
 
 /**
-* @ingroup Utilities
-* @brief Lambda object allocator template
-*
-* Manages the life cycle of an object with lambda function
-**/
+ * @ingroup Utilities
+ * @brief Lambda object allocator template
+ *
+ * Manages the life cycle of an object with lambda function
+ **/
 template<typename T>
 struct LambdaAllocator : public IAllocator < T > {
 	std::function<T*()> const Create;

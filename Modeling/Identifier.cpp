@@ -29,7 +29,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // [Modeling] Identifiers and Identifier Pools
-// Zhenyu Wu @ Sep 24, 2013: Uplift from a child project
 
 #include "BaseLib/MMSwitcher.h"
 

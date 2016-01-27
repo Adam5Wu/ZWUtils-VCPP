@@ -50,12 +50,12 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "DebugLog.h"
 
 /**
-* @ingroup Utilities
-* @brief Generic exception class
-*
-* Contains useful information about the exception:
-*  source, reason and a helper integer.
-**/
+ * @ingroup Utilities
+ * @brief Generic exception class
+ *
+ * Contains useful information about the exception:
+ *  source, reason and a helper integer.
+ **/
 class Exception {
 public:
 	static LPCTSTR const ExceptSourceNone;
@@ -70,10 +70,10 @@ public:
 	TString const Reason;
 
 	/**
-	* Create an exception object with given source, reason, and an optional helper integer
-	*
-	* @note Use the @link FAIL() \p FAIL* @endlink macros to retrive source info automatically
-	**/
+	 * Create an exception object with given source, reason, and an optional helper integer
+	 *
+	 * @note Use the @link FAIL() \p FAIL* @endlink macros to retrive source info automatically
+	 **/
 	template<typename... Params>
 	Exception(LPCTSTR &&xSource, LPCTSTR ReasonFmt, Params&&... xParams) :
 		Source(xSource ? xSource : EmptyWText), Reason(EmptyWText), rWhy(EmptyWText) {
@@ -93,14 +93,14 @@ public:
 	virtual ~Exception(void) {}
 
 	/**
-	* Returns a description of the exception
-	* @note The caller does NOT have ownership of the returned string
-	**/
+	 * Returns a description of the exception
+	 * @note The caller does NOT have ownership of the returned string
+	 **/
 	virtual LPCTSTR Why(void) const;
 
 	/**
-	* Prints the description of the exception via @link ERRORPRINT() DEBUG printing functions @endlink
-	**/
+	 * Prints the description of the exception via @link ERRORPRINT() DEBUG printing functions @endlink
+	 **/
 	virtual void Show(void) const;
 };
 
