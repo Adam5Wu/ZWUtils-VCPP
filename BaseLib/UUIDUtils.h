@@ -53,9 +53,9 @@ union Flatten_UUID {
 
 	Flatten_UUID(UUID const &xValue) :
 		Value(xValue) {}
-	Flatten_UUID(UINT64 const &A, UINT64 const &B) :
+	Flatten_UUID(UINT64 A, UINT64 B) :
 		U64A(A), U64B(B) {}
-	Flatten_UUID(UINT32 const &A, UINT32 const &B, UINT32 const &C, UINT32 const &D) :
+	Flatten_UUID(UINT32 A, UINT32 B, UINT32 C, UINT32 D) :
 		U32A(A), U32B(B), U32C(C), U32D(D) {}
 };
 

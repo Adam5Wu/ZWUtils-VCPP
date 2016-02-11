@@ -108,7 +108,7 @@ union INET4 {
 	struct {
 		UINT8 A, B, C, D;
 	};
-	INET4(UINT32 const &T) : Addr(T) {}
+	INET4(UINT32 T) : Addr(T) {}
 	size_t hashcode(void) const;
 	TString toString(void) const;
 	bool equalto(INET4 const &T) const;
@@ -124,9 +124,9 @@ union UINT128 {
 	struct { UINT32 U32A, U32B, U32C, U32D; };
 	struct { UINT16 U16[8]; };
 	struct { UINT8 U8[16]; };
-	UINT128(UINT64 const &A, UINT64 const &B) :
+	UINT128(UINT64 A, UINT64 B) :
 		U64A(A), U64B(B) {}
-	UINT128(UINT32 const &A, UINT32 const &B, UINT32 const &C, UINT32 const &D) :
+	UINT128(UINT32 A, UINT32 B, UINT32 C, UINT32 D) :
 		U32A(A), U32B(B), U32C(C), U32D(D) {}
 	size_t hashcode(void) const;
 	static enum class Format {
@@ -149,7 +149,7 @@ union HASH256 {
 	struct { UINT32 U32A, U32B, U32C, U32D, U32E, U32F, U32G, U32H; };
 	struct { UINT16 U16[16]; };
 	struct { UINT8 U8[32]; };
-	HASH256(UINT64 const &A, UINT64 const &B, UINT64 const &C, UINT64 const &D) :
+	HASH256(UINT64 A, UINT64 B, UINT64 C, UINT64 D) :
 		U64A(A), U64B(B), U64C(C), U64D(D) {}
 	size_t hashcode(void) const;
 	TString toString(void) const;
@@ -164,13 +164,16 @@ inline bool operator !=(HASH256 const &A, HASH256 const &B)
 bool StrToInt(LPCTSTR String, int &i, int base = 10);
 bool StrToDouble(LPCTSTR String, double &d);
 
-UINT32 CountBits32(UINT32 const &Mask);
-UINT32 CountBits64(UINT64 const &Mask);
+UINT32 CountBits32(UINT32 Mask);
+UINT32 CountBits64(UINT64 Mask);
 #ifdef _WIN64
 #define CountBits CountBits64
 #else
 #define CountBits CountBits32
 #endif
+
+int LOG2(UINT32 Value);
+int LOG2(UINT64 Value);
 
 #define ENFORCE_DERIVE(Base, Derived) \
 	static_assert(std::is_base_of<Base, Derived>::value, "Type inheritance constraint violation")
