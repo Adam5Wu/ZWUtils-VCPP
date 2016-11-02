@@ -189,13 +189,16 @@ void __CRTDECL _fast_details(
 
 static LPCTSTR _FormatSize(UINT64 Size, LPTSTR Buffer, size_t BufLen) {
 	static const int UnitSizes[] = {1024, 1024, 1024, 1024};
-	static LPCTSTR UnitNames[] = {_T("KB"), _T("MB"), _T("GB"), _T("TB"), _T("PB")};
+	static LPCTSTR UnitNames[] = {_T("KB"), _T("MB"), _T("GB"), _T("TB")};
 
 	int UnitIdx = 0;
 	UINT64 BaseUnit = UnitSizes[UnitIdx];
-	while (UnitIdx < ARRAYSIZE(UnitSizes)) {
-		if (Size < BaseUnit * UnitSizes[UnitIdx + 1]) break;
+	while (UnitIdx < ARRAYSIZE(UnitNames) - 1) {
 		BaseUnit *= UnitSizes[++UnitIdx];
+		if (Size < BaseUnit) {
+			BaseUnit /= UnitSizes[UnitIdx--];
+			break;
+		}
 	}
 
 	_stprintf_s(Buffer, BufLen, _T("%.2f%s"), (double)Size / BaseUnit, UnitNames[UnitIdx]);

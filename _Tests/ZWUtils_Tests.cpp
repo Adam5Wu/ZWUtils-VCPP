@@ -123,7 +123,7 @@ class TestQueueGet : public TRunnable {
 protected:
 	void* Run(TWorkerThread &WorkerThread, void* pSyncIntQueue) override {
 		TSyncIntQueue& Q = *(TSyncIntQueue*)pSyncIntQueue;
-		int j;
+		int j = -1;
 
 		int COUNT = IsDebuggerPresent() ? 10000 : 1000000;
 		Flatten_FILETIME StartTime;
