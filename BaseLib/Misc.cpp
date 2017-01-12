@@ -40,6 +40,11 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #pragma comment(lib, "ws2_32.lib")
 
+char const* ACP_LOCALE(void) {
+	static std::string __IoFU(CStringCast('.' << GetACP()));
+	return __IoFU.c_str();
+}
+
 //std::string const EMPTY_CSTRING(EmptyAText);
 //TString const EMPTY_TSTRING()(EmptyWText);
 std::string const& EMPTY_CSTRING(void) {

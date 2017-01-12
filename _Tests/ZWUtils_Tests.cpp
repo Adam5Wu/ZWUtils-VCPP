@@ -250,27 +250,30 @@ void TestSyncObj(void) {
 
 	LOG(_T("--- Increment by one"));
 	LOG(_T("a = %d"), (Integer&)a.Pickup());
-	((Integer)a.Pickup())++;
+	(*a.Pickup())++;
 	LOG(_T("a = %d"), (Integer&)a.Pickup());
 
 	LOG(_T("--- Assign and snapshot"));
 	a.Assign(50);
 	Integer c;
 	a.Snapshot(c);
-	LOG(_T("c = %d"), c);
+	LOG(_T("a = %d"), c);
+	Integer d = 55;
+	LOG(_T("d = %d"), d);
 
 	LOG(_T("--- Compare and Swap (Success)"));
-	Integer d = 55;
 	a.CompareAndSwap(50, d);
 	LOG(_T("d = %d"), d);
 	LOG(_T("a = %d"), (Integer&)a.Pickup());
 
 	LOG(_T("--- Compare and Swap (Fail)"));
 	d = 60;
+	LOG(_T("d = %d"), d);
 	a.CompareAndSwap(50, d);
 	LOG(_T("d = %d"), d);
 	LOG(_T("a = %d"), (Integer&)a.Pickup());
 
+	LOG(_T("--- Hand-off Construction (No memory leak)"));
 	TSyncInteger _b(HANDOFF_CONSTRUCT, new Integer(123));
 	LOG(_T("_b = %d"), (Integer&)_b.Pickup());
 
@@ -501,21 +504,22 @@ void TestIdentifiers(void) {
 }
 
 void TestStringConv(void) {
-	setlocale(LC_ALL, "chs");
 	LOG(_T("*** Test String Conversions"));
-	LOG(_T("Converting: 'This is a test...'"));
 	TString Test1 = _T("This is a test...");
+	LOG(_T("Converting: '%s'"), Test1.c_str());
 	std::string Test1C = TStringtoUTF8(Test1);
 	TString Test1R = UTF8toTString(Test1C);
 	if (Test1.compare(Test1R) != 0)
 		FAIL(_T("String failed to round-trip!"));
 
-	LOG(_T("Converting: '这是一个测试...'"));
+	setlocale(LC_ALL, "chs");
 	TString Test2 = _T("这是一个测试...");
+	LOG(_T("Converting: '%s'"), Test2.c_str());
 	std::string Test2C = TStringtoUTF8(Test2);
 	TString Test2R = UTF8toTString(Test2C);
 	if (Test2.compare(Test2R) != 0)
 		FAIL(_T("String failed to round-trip!"));
+	setlocale(LC_ALL, ACP_LOCALE());
 }
 
 void TestThrottler(void) {

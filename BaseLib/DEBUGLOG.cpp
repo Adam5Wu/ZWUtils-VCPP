@@ -105,10 +105,17 @@ TLogTargets& LogTargets(void) {
 	return __IoFU;
 }
 
+void __LocaleInit(void) {
+	static char const* __InitLocale = nullptr;
+	if (!__InitLocale)
+		setlocale(LC_ALL, __InitLocale = ACP_LOCALE());
+}
+
 void ERRORPRINTF(LPCTSTR Fmt, ...) {
 	va_list params;
 	va_start(params, Fmt);
 	Synchronized((*Lock_DebugLog()), {
+		__LocaleInit();
 		for (size_t i = 0; i < LogTargets().size(); i++) {
 			_vftprintf(LogTargets()[i].second, Fmt, params);
 			fflush(LogTargets()[i].second);

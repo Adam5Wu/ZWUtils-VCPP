@@ -220,11 +220,11 @@ public:
 		inline T* operator&(void) const
 		{ return Obj; }
 		inline T& operator*(void) const
-		{ return *&*this; }
+		{ return *&(*this); }
 		inline T* operator->(void) const
-		{ return &*this; }
+		{ return &(*this); }
 		inline operator T&() const
-		{ return **this; }
+		{ return *(*this); }
 	};
 
 public:

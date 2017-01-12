@@ -73,6 +73,8 @@ TString UTF8toTString(std::string const &Str, TString &ErrMessage);
 std::string const& EMPTY_CSTRING(void);
 TString const& EMPTY_TSTRING(void);
 
+char const* ACP_LOCALE(void);
+
 // Time Conversion Factors
 #define HTime_aDay		24
 #define MTime_anHour	60
