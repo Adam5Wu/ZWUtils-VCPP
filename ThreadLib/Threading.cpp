@@ -34,18 +34,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "Threading.h"
 
-//static TLockableCS CSLock_ConsoleIn;
-//static TLockableCS CSLock_ConsoleOut;
-//static TLockableCS CSLock_ConsoleErr;
-//static TLockableCS CSLock_DebugLog;
-//static TLockableCS CSLock_Global;
-//
-//static TLockable* Lock_ConsoleIn = &CSLock_ConsoleIn;
-//static TLockable* Lock_ConsoleOut = &CSLock_ConsoleOut;
-//static TLockable* Lock_ConsoleErr = &CSLock_ConsoleErr;
-//static TLockable* Lock_DebugLog = &CSLock_DebugLog;
-//static TLockable* Lock_Global = &CSLock_Global;
-
 PLockable& Lock_ConsoleIn(void) {
 	static TLockableCS __IoFU_T;
 	static PLockable __IoFU = &__IoFU_T;

@@ -58,8 +58,6 @@ public:
 	{ return _T("!"); }
 };
 
-//static ManagedRef<RootIdentifier> _RootIdent(EMPLACE_CONSTRUCT);
-//IIdentifier const &RootIdent = _RootIdent;
 IIdentifier const& RootIdent(void) {
 	static ManagedRef<RootIdentifier> __IoFU_T(EMPLACE_CONSTRUCT);
 	return __IoFU_T;

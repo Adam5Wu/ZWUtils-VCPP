@@ -41,13 +41,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using namespace std;
 
-//static TCHAR* const STR_WorkerThreadState[] = {
-//	_T("Initialzing"),
-//	_T("Running"),
-//	_T("Terminating"),
-//	_T("Terminated"),
-//};
-
 #define WTLogTag _T("W.Thread '%s'")
 #define WTLogHeader _T("{") WTLogTag _T("} ")
 
