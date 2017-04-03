@@ -217,7 +217,7 @@ bool TSyncQueue<T, Container>::TryDequeue(T& entry) {
 	auto rQueue(Queue.Pickup());
 	size_t QueueSize = rQueue->size();
 	if (QueueSize > 0) {
-		entry = rQueue->front();
+		entry = std::move(rQueue->front());
 		rQueue->pop_front();
 #ifdef EMPTY_EVENT
 		if (QueueSize == 1)
