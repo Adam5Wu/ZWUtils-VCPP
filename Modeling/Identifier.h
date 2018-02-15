@@ -189,9 +189,9 @@ public:
 	INameIdent(TString &&xName)
 	{ _Init(std::move(xName)); }
 
-	virtual void operator =(INameIdent const &xNameIdent)
+	void operator =(INameIdent const &xNameIdent)
 	{ const_cast<TString*>(&Name)->assign(xNameIdent.Name); }
-	virtual void operator =(INameIdent &&xNameIdent)
+	void operator =(INameIdent &&xNameIdent)
 	{ const_cast<TString*>(&Name)->assign(std::move(*const_cast<TString*>(&xNameIdent.Name))); }
 
 	bool equalto(IIdentifier const &xIdentifier) const override;

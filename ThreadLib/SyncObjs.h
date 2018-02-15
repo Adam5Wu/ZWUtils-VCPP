@@ -365,9 +365,11 @@ T& TSyncObj<T, TAllocator, CLockable>::__Pickup(void) {
 	Lock.__SyncLock();
 	__try {
 		return *this;
-	} __except (EXCEPTION_EXECUTE_HANDLER) {
+	} __except ([&] {
 		Lock.__SyncUnlock();
-		throw;
+		return EXCEPTION_CONTINUE_SEARCH;
+		}()) {
+		// Should not reach!
 	}
 }
 
@@ -376,9 +378,11 @@ T* TSyncObj<T, TAllocator, CLockable>::__TryPickup(void) {
 	if (Lock.__SyncTryLock()) {
 		__try {
 			return &((T&)*this);
-		} __except (EXCEPTION_EXECUTE_HANDLER) {
+		} __except ([&] {
 			Lock.__SyncUnlock();
-			throw;
+			return EXCEPTION_CONTINUE_SEARCH;
+			}()) {
+			// Should not reach!
 		}
 	}
 	return nullptr;
