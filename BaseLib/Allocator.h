@@ -83,7 +83,9 @@ struct DummyAllocator : public IAllocator < T > {
 	inline static T* Create(Params&&... xParams)
 	{ FAIL(_T("Should not reach")); }
 
-	inline static void Destroy(T *Obj) {}
+	inline static void Destroy(T *Obj) {
+		// Do Nothing
+	}
 };
 
 /**

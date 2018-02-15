@@ -107,8 +107,10 @@ TLogTargets& LogTargets(void) {
 
 void __LocaleInit(void) {
 	static char const* __InitLocale = nullptr;
-	if (!__InitLocale)
-		setlocale(LC_ALL, __InitLocale = ACP_LOCALE());
+	if (!__InitLocale) {
+		__InitLocale = ACP_LOCALE();
+		setlocale(LC_ALL, __InitLocale);
+	}
 }
 
 void ERRORPRINTF(LPCTSTR Fmt, ...) {
